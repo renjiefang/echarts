@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+    <script src="js/data.js"></script>
+</head>
+<body>
+<div id="main" style="width: 600px;height:400px;"></div>
+
+<script>
+    var myChart = echarts.init(document.getElementById('main'));
+
+
+    // 指定图表的配置项和数据
+    var option = {
+        backgroundColor: '#2c343c',
+
+        title: {
+            text: 'Customized Pie',
+            left: 'center',
+            top: 20,
+            textStyle: {
+                color: '#ccc'
+            }
+        },
+        series : [
+            {
+                name:'访问来源',
+                type:'pie',
+                radius : '55%',
+                center: ['50%', '50%'],
+                data:[
+                ]
+            }
+        ]
+    };
+
+
+
+
+     let data1 = [];
+     for(let i =0; i < categories.length; i++) {
+           if(i ==0) {
+               continue;
+           }
+                let name = categories[i]
+                let value = data.filter(ele =>ele[4].includes(name)).length
+                 console.log(value)
+                 data1.push({value,name})
+     }
+
+
+        option.series[0].data=data1
+       // console.log( option.series[0].data)
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</body>
+</html>
